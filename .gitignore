@@ -13,3 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+
+# Ignore generated BuildConfig and other sources
+app/build/generated/
+secrets.properties
