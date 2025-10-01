@@ -73,5 +73,8 @@ dependencies {
 
     implementation(libs.lifecycle.viewmodel.compose)
 
+    implementation("com.airbnb.android:lottie-compose:6.3.0")
+
+
 
 }

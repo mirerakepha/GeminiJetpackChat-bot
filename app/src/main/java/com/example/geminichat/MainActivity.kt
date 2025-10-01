@@ -17,6 +17,7 @@ import com.example.geminichat.ui.theme.chat.ChatScreen
 import com.example.geminichat.ui.theme.data.ChatViewModel
 import kotlinx.coroutines.delay
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.airbnb.lottie.compose.*
 
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +37,7 @@ fun AppEntryPoint() {
     var showSplash by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
-        delay(2000) // 2 seconds delay
+        delay(5000) // 5 seconds delay
         showSplash = false
     }
 
@@ -50,16 +51,22 @@ fun AppEntryPoint() {
 
 @Composable
 fun SplashScreen() {
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.brain))
+    val progress by animateLottieCompositionAsState(
+        composition = composition,
+        iterations = LottieConstants.IterateForever
+    )
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.primary),
         contentAlignment = Alignment.Center
     ) {
-        Text(
-            text = "Gemini Chat",
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.onPrimary
+        LottieAnimation(
+            composition = composition,
+            progress = { progress },
+            modifier = Modifier.fillMaxSize(0.5f) // scale animation
         )
     }
 }
